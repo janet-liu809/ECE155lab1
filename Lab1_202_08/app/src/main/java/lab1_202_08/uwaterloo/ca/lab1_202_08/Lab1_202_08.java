@@ -90,53 +90,14 @@ public class Lab1_202_08 extends AppCompatActivity {
         LL.addView(fileButton);
 
         //Create all the needed TextViews
-        lightText = new TextView(getApplicationContext());
-        lightText.setTextColor(Color.WHITE);
-        LL.addView(lightText);
-        lightMaxText = new TextView(getApplicationContext());
-        lightMaxText.setText("The Maximum Light Sensor Reading is:");
-        lightMaxText.setTextColor(Color.WHITE);
-        LL.addView(lightMaxText);
-        lightMaxNumber = new TextView(getApplicationContext());
-        lightMaxNumber.setText("0");
-        lightMaxNumber.setTextColor(Color.WHITE);
-        LL.addView(lightMaxNumber);
+        setMaxTextView(LL, lightText, lightMaxText, lightMaxNumber, "The Maximum Light Sensor Reading is:");
 
-        accelerometerText = new TextView(getApplicationContext());
-        accelerometerText.setTextColor(Color.WHITE);
-        LL.addView(accelerometerText);
-        accelerometerMaxText  = new TextView(getApplicationContext());
-        accelerometerMaxText.setText("The Maximum Accelerometer Sensor Reading is:");
-        accelerometerMaxText.setTextColor(Color.WHITE);
-        LL.addView(accelerometerMaxText);
-        accelerometerMaxNumber = new TextView(getApplicationContext());
-        accelerometerMaxNumber.setText("0");
-        accelerometerMaxNumber.setTextColor(Color.WHITE);
-        LL.addView(accelerometerMaxNumber);
+        setMaxTextView(LL, accelerometerText, accelerometerMaxText, accelerometerMaxNumber, "The Maximum Accelerometer Sensor Reading is:");
 
-        magneticFieldText = new TextView(getApplicationContext());
-        magneticFieldText.setTextColor(Color.WHITE);
-        LL.addView(magneticFieldText);
-        magneticFieldMaxText  = new TextView(getApplicationContext());
-        magneticFieldMaxText.setText("The Maximum Magnetic Sensor Reading is:");
-        magneticFieldMaxText.setTextColor(Color.WHITE);
-        LL.addView(magneticFieldMaxText);
-        magneticFieldMaxNumber = new TextView(getApplicationContext());
-        magneticFieldMaxNumber.setText("0");
-        magneticFieldMaxNumber.setTextColor(Color.WHITE);
-        LL.addView(magneticFieldMaxNumber);
+        setMaxTextView(LL, magneticFieldText, magneticFieldMaxText, magneticFieldMaxNumber, "The Maximum Magnetic Sensor Reading is:");
 
-        rotationVectorText = new TextView(getApplicationContext());
-        rotationVectorText.setTextColor(Color.WHITE);
-        LL.addView(rotationVectorText);
-        rotationVectorMaxText  = new TextView(getApplicationContext());
-        rotationVectorMaxText.setText("The Maximum Rotation Vector Sensor Reading is:");
-        rotationVectorMaxText.setTextColor(Color.WHITE);
-        LL.addView(rotationVectorMaxText);
-        rotationVectorMaxNumber = new TextView(getApplicationContext());
-        rotationVectorMaxNumber.setText("0");
-        rotationVectorMaxNumber.setTextColor(Color.WHITE);
-        LL.addView(rotationVectorMaxNumber);
+        setMaxTextView(LL, rotationVectorText, rotationVectorMaxText, rotationVectorMaxNumber, "The Maximum Rotation Vector Sensor Reading is:");
+
 
         //Save all the max readings, and stores them with in a key-value pair
         if(savedInstanceState != null){
@@ -162,6 +123,24 @@ public class Lab1_202_08 extends AppCompatActivity {
         sensorManager.registerListener(rotationVector, rotationVectorSensor, SensorManager.SENSOR_DELAY_NORMAL);
 
     }
+
+    void setMaxTextView(LinearLayout LL, TextView name, TextView nameMaxText, TextView nameMaxNum, String message){
+
+        name = new TextView(getApplicationContext());
+        name.setTextColor(Color.WHITE);
+        LL.addView(name);
+        nameMaxText  = new TextView(getApplicationContext());
+        nameMaxText.setText(message);
+        nameMaxText.setTextColor(Color.WHITE);
+        LL.addView(nameMaxText);
+        nameMaxNum = new TextView(getApplicationContext());
+        nameMaxNum.setText("0");
+        nameMaxNum.setTextColor(Color.WHITE);
+        LL.addView(nameMaxNum);
+
+    }
+
+
     public void onSaveInstanceState(Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putString("maxLight", lightMaxNumber.getText().toString());
