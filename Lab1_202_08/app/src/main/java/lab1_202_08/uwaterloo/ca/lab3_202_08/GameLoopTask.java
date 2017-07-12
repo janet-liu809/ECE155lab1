@@ -9,7 +9,6 @@ import android.widget.RelativeLayout;
 
 import java.util.TimerTask;
 
-@RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
 public class GameLoopTask extends TimerTask {
     private Activity myActivity;
     private RelativeLayout MyRL;
@@ -44,7 +43,6 @@ public class GameLoopTask extends TimerTask {
         this.myActivity.runOnUiThread(
                 new Runnable(){
                     public void run(){
-
                         myBlock.move();
                     }
                 }
@@ -55,18 +53,23 @@ public class GameLoopTask extends TimerTask {
         switch (newDirection) {
             case "RIGHT":
                 this.currentGameDirection = gameDirection.RIGHT;
+                System.out.println("THIS IS PRINTING RIGHT");
                 break;
             case "LEFT":
                 this.currentGameDirection = gameDirection.LEFT;
+                System.out.println("THIS IS PRINTING LEFT");
                 break;
             case "UP":
                 this.currentGameDirection = gameDirection.UP;
+                System.out.println("THIS IS PRINTING UP");
                 break;
             case "DOWN":
                 this.currentGameDirection = gameDirection.DOWN;
+                System.out.println("THIS IS PRINTING DOWN");
                 break;
             default:
                 this.currentGameDirection = gameDirection.NO_MOVEMENT;
+                System.out.println("THIS IS PRINTING NO_MOVEMENT");
         }
         myBlock.setBlockDirection(this.currentGameDirection);
     }

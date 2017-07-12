@@ -2,6 +2,12 @@ package lab1_202_08.uwaterloo.ca.lab3_202_08;
 
 import android.widget.TextView;
 
+import static lab1_202_08.uwaterloo.ca.lab3_202_08.FSM_Y.FSMStates.DOWN;
+import static lab1_202_08.uwaterloo.ca.lab3_202_08.FSM_Y.FSMStates.LEFT;
+import static lab1_202_08.uwaterloo.ca.lab3_202_08.FSM_Y.FSMStates.NO_MOVEMENT;
+import static lab1_202_08.uwaterloo.ca.lab3_202_08.FSM_Y.FSMStates.RIGHT;
+import static lab1_202_08.uwaterloo.ca.lab3_202_08.FSM_Y.FSMStates.UP;
+
 
 public class FSM_Y {
 
@@ -38,20 +44,40 @@ public class FSM_Y {
     //Constructor.  FSM is started into NO_MOVEMENT state.
     public FSM_Y(TextView displayTV){
         //The default state is NO_MOVEMENT
-        myStates = FSMStates.NO_MOVEMENT;
+        myStates = NO_MOVEMENT;
         //Sets previous reading as 0 for initial value
         previousReading = 0;
         DirectionTV = displayTV;
         //Text views maxText and minText is seen for easy debugging
+    }
 
-
+    public FSM_Y(String direction){
+        if (direction.equals("Up")){
+            myStates = UP;
+        }
+        else if (direction.equals("Down")){
+            myStates = DOWN;
+        }
+        else if(direction.equals("Right")){
+            myStates = RIGHT;
+        }
+        else if (direction.equals("Left")){
+            myStates = LEFT;
+        }
+        else{
+            myStates = NO_MOVEMENT;
+        }
     }
 
 
     //Resetting the FSM back to the initial state
     public void resetFSM(){
-        myStates = FSMStates.NO_MOVEMENT;
+        myStates = NO_MOVEMENT;
         previousReading = 0;
+    }
+
+    public void activateFSM_Button(){
+
     }
 
     //This is the main FSM body
@@ -134,7 +160,7 @@ public class FSM_Y {
                 }
                 //when reading is stable again
                 if (accInputY < 2 && accInputY > -2) {
-                    myStates = FSMStates.NO_MOVEMENT;
+                    myStates = NO_MOVEMENT;
                 }
 
                 break;
@@ -150,7 +176,7 @@ public class FSM_Y {
                 }
                 //when reading is stable again
                 if (accInputY < 2 && accInputY > -2) {
-                    myStates = FSMStates.NO_MOVEMENT;
+                    myStates = NO_MOVEMENT;
                 }
                 break;
             case RIGHT:
@@ -163,7 +189,7 @@ public class FSM_Y {
                 }
                 //when reading is stable again
                 if (accInputX < 2 && accInputX > -2) {
-                    myStates = FSMStates.NO_MOVEMENT;
+                    myStates = NO_MOVEMENT;
                 }
                 break;
             case LEFT:
@@ -176,7 +202,7 @@ public class FSM_Y {
                 }
                 //when reading is stable again
                 if (accInputX < 2 && accInputX > -2) {
-                    myStates = FSMStates.NO_MOVEMENT;
+                    myStates = NO_MOVEMENT;
                 }
                 break;
 

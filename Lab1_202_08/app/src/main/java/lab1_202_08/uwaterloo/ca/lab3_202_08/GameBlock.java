@@ -1,15 +1,14 @@
 package lab1_202_08.uwaterloo.ca.lab3_202_08;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-/**
- * Created by Janet Liu on 6/26/2017.
- */
-@RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
+
 public class GameBlock extends ImageView {
     private final float IMAGE_SCALE = 0.70f;
     private final int MAX_BOUND = -78;
@@ -40,6 +39,14 @@ public class GameBlock extends ImageView {
         this.value = initValue;
         curCoordX = coordX;
         curCoordY = coordY;
+
+        //Create textview to output value of block
+        TextView blockValue = new TextView(myContext);
+        blockValue.setText(String.format("%d", value));
+        blockValue.setTextColor(Color.BLACK);
+        blockValue.setTextSize(60);
+        blockValue.setX(1002);
+        blockValue.setY(1002);
     }
 
     //Sets the direction of the block
