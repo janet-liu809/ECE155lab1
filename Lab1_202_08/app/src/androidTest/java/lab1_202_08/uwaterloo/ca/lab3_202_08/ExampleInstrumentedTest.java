@@ -1,4 +1,4 @@
-package lab1_202_08.uwaterloo.ca.lab1_202_08;
+package lab1_202_08.uwaterloo.ca.lab3_202_08;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
